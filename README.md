@@ -1,7 +1,3 @@
-Here’s a cleaner, more polished README without emojis:
-
----
-
 # Wordle Solver
 
 A simple command-line tool that helps you solve Wordle efficiently by suggesting the best next guess based on previous feedback.
@@ -39,7 +35,3 @@ You should input:
 ```
 
 The solver will then analyze this information and suggest your next optimal word.
-
----
-
-If you want, I can also reorganize it into sections like installation, algorithm description, or add examples.
