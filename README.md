@@ -1,13 +1,17 @@
-Wordle Solver
+# Wordle Solver
 
-Usage:
-python wordle_solver.py
+A simple web-based tool to help solve Wordle puzzles.
 
-The script suggests a word. Enter it in Wordle and report the colors back using these numbers:
+## How to Use
 
-0 - Gray (not in word)
-1 - Yellow (wrong spot)
-2 - Green (correct spot)
+1. Choose a starting word or enter your own
+2. Enter the word in Wordle
+3. Click each letter tile to match the colors Wordle gave you (Gray → Yellow → Green)
+4. Click **Submit Pattern** to get the next best word
+5. Repeat until solved
 
-Example: 01202 represents Gray, Yellow, Green, Gray, Green.
+## Features
 
+- Light/Dark mode toggle
+- Minimax algorithm for optimal word suggestions
+- Full wordle official possible word database

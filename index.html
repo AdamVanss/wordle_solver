@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordle Solver</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcome-screen">
+      <div class="welcome-content">
+        <h1 class="welcome-title">Welcome to Wordle Solver</h1>
+        <p class="welcome-subtitle">
+          Get the best word suggestions to solve Wordle puzzles
+        </p>
+        <button class="btn btn-primary btn-large" onclick="startGame()">
+          Start
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Game UI (hidden initially) -->
+    <div class="game-container" id="game-container" style="display: none">
+      <div class="container">
+        <header>
+          <h1>Wordle Solver</h1>
+          <button
+            class="theme-toggle"
+            onclick="toggleTheme()"
+            title="Toggle theme"
+            aria-label="Toggle dark mode"
+          >
+            <!-- Sun icon -->
+            <svg class="icon-sun" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Moon icon -->
+            <svg class="icon-moon" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </header>
+
+        <!-- Try this word (hidden initially) -->
+        <div class="suggestion-box hidden" id="suggestion-box">
+          <div class="suggestion-label">Try this word</div>
+          <div class="suggestion-word" id="suggestion">TRACE</div>
+          <div class="remaining" id="remaining">2344 possible words</div>
+          <div class="candidates-preview" id="candidates-preview"></div>
+        </div>
+
+        <!-- Starting Word Selector -->
+        <div class="starting-word-section" id="starting-word-section">
+          <h3>Choose Starting Word</h3>
+          <div class="starting-word-buttons" id="starting-word-buttons">
+            <button
+              class="starting-word-btn"
+              onclick="setStartingWord('TRACE')"
+            >
+              TRACE
+            </button>
+            <button
+              class="starting-word-btn"
+              onclick="setStartingWord('CRANE')"
+            >
+              CRANE
+            </button>
+            <button
+              class="starting-word-btn"
+              onclick="setStartingWord('SLATE')"
+            >
+              SLATE
+            </button>
+            <button
+              class="starting-word-btn"
+              onclick="setStartingWord('AUDIO')"
+            >
+              AUDIO
+            </button>
+          </div>
+          <div class="custom-word-container">
+            <p>Or Enter Custom Starting Word</p>
+            <input
+              type="text"
+              id="custom-word-input"
+              class="custom-word-input"
+              placeholder="Enter 5-letter word"
+              maxlength="5"
+              onkeyup="handleCustomWordInput(event)"
+            />
+            <button
+              class="btn btn-custom-word"
+              onclick="addCustomStartingWord()"
+            >
+              Add Custom Word
+            </button>
+          </div>
+        </div>
+
+        <div class="pattern-section">
+          <h2>Click on the letters for Colors</h2>
+
+          <div class="tiles-container" id="tiles">
+            <div
+              class="tile"
+              data-index="0"
+              data-state="0"
+              onclick="cycleTile(0)"
+            >
+              T
+            </div>
+            <div
+              class="tile"
+              data-index="1"
+              data-state="0"
+              onclick="cycleTile(1)"
+            >
+              R
+            </div>
+            <div
+              class="tile"
+              data-index="2"
+              data-state="0"
+              onclick="cycleTile(2)"
+            >
+              A
+            </div>
+            <div
+              class="tile"
+              data-index="3"
+              data-state="0"
+              onclick="cycleTile(3)"
+            >
+              C
+            </div>
+            <div
+              class="tile"
+              data-index="4"
+              data-state="0"
+              onclick="cycleTile(4)"
+            >
+              E
+            </div>
+          </div>
+
+          <div class="legend">
+            <div class="legend-item">
+              <div class="legend-dot gray"></div>
+              <span>Gray</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot yellow"></div>
+              <span>Yellow</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot green"></div>
+              <span>Green</span>
+            </div>
+          </div>
+
+          <h3 class="instructions">Enter the suggested word in Wordle.</h3>
+
+          <button class="btn btn-primary" onclick="submitPattern()">
+            Submit Pattern
+          </button>
+          <button class="btn btn-secondary" onclick="resetGame()">
+            Start Over
+          </button>
+
+          <div id="message"></div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
