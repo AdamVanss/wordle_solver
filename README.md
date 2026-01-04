@@ -13,3 +13,5 @@
 - Light/Dark mode toggle
 - Minimax algorithm for optimal word suggestions
 - Full wordle official possible word database
+
+DO NOT CHANGE THE LOCATION OF THE FILES.

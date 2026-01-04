@@ -51,7 +51,7 @@ def precompute_patterns(words):
     return table
 
 def load_or_compute_patterns(words):
-    cache_file = "wordle_patterns_cache.pkl"
+    cache_file = "python_terminal_version/wordle_patterns_cache.pkl"
     
     if os.path.exists(cache_file):
         print("Loading cached patterns...")
@@ -157,7 +157,7 @@ def interactive_solver(words, table):
         print(f"Guess this word: {guess}")
 
 if __name__ == "__main__":
-    with open("word_database.txt", "r") as f:
+    with open("python_terminal_version/word_database.txt", "r") as f:
         words = [w.strip().upper() for w in f.readlines() if w.strip()]
     
     words = [w for w in words if len(w) == 5]

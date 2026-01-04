@@ -1782,6 +1782,7 @@ const WORDS = [
   "SINGE",
   "SIREN",
   "SISSY",
+  "SITAR",
   "SIXTH",
   "SIXTY",
   "SKATE",

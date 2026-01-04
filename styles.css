@@ -318,6 +318,13 @@ h1 {
   transition: opacity 0.3s, visibility 0.3s;
 }
 
+.welcome-author {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 .welcome-screen.hidden {
   opacity: 0;
   visibility: hidden;
